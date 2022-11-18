@@ -688,12 +688,7 @@ ol {
   margin-top: 0;
 }
 
-.subscription-button-position {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
+
 
 .subscription-button-text {
   font-weight: 700;
@@ -705,10 +700,9 @@ ol {
 
 .subscription-button-icon {
   margin-left: 10px;
-  width: 200px;
-  height: 50px;
+  width: 24px;
+  height: 24px;
   border-color: transparent;
-  margin-top: 30px;
 }
 
 /* Portfolio */
@@ -955,6 +949,7 @@ ol {
   margin-bottom: 30px;
   margin-top: 20px;
   justify-content: center;
+  align-items: center;
 }
 
 .contacts-form-accept-text {
@@ -1039,6 +1034,11 @@ ol {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+.btn-modal-close:hover,
+.btn-modal-close:focus {
+  fill: var(--accent-color);
 }
 
 .modal-form {
