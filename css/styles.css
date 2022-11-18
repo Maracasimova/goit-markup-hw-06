@@ -625,10 +625,10 @@ ol {
   display: block;
   font-weight: 700;
   font-size: 14px;
-  line-height: 1.14;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   margin-bottom: 20px;
+  line-height: calc(16 / 14);
 
   color: var(--white-color);
 }
@@ -652,6 +652,7 @@ ol {
 
 .subscription-email {
   display: inline-block;
+  height: 50px;
   width: 358px;
   padding: 15px 16px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -664,29 +665,34 @@ ol {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.subscription-button {
+.subscription-email:focus,
+.subscription-email:hover {
+  outline: none;
+  border: 1px solid #2196f3;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+}
+
+.subscription-email::placeholder {
+  font-weight: 400;
+}
+
+.button-secondary.subscription-button {
   position: relative;
   width: 200px;
   height: 50px;
-  background: var(--accent-color);
   box-shadow: 0px 4px 4px rgb(0 0 0 / 15%);
-  border-radius: 4px;
   margin-left: 12px;
   border-color: transparent;
-  cursor: pointer;
   display: flex;
-  justify-content: center;
   align-items: center;
-  transition-property: box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 0;
 }
 
 .subscription-button-position {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  position: relative;
 }
 
 .subscription-button-text {
@@ -698,8 +704,11 @@ ol {
 }
 
 .subscription-button-icon {
-  fill: var(--white-color);
   margin-left: 10px;
+  width: 200px;
+  height: 50px;
+  border-color: transparent;
+  margin-top: 30px;
 }
 
 /* Portfolio */
@@ -865,11 +874,31 @@ ol {
 .contacts-form {
   display: flex;
   flex-direction: column;
-  margin-top: 12px;
+  margin-top: 2px;
+}
+
+.contacts-form-icon-accept,
+.contacts-form-icon-unaccept {
+  transition: opacity;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contacts-form-checkbox:checked
+  + .contacts-form-checkbox-icon
+  .contacts-form-accept-yes {
+  opacity: 0;
+}
+
+.contacts-form-checkbox:checked
+  + .contacts-form-checkbox-icon
+  .contacts-form-accept-no {
+  opacity: 1;
 }
 
 .contacts-form-label {
   font-size: 12px;
+  font-weight: 400;
   letter-spacing: 0.1px;
   color: var(--title-text-color);
   line-height: calc(14 / 12);
@@ -890,9 +919,35 @@ ol {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.contacts-form-field:focus,
+.contacts-form-comment:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+.contacts-form-field:focus + .contacts-form-img {
+  fill: var(--accent-color);
+}
+
+.contacts-form-comment::placeholder {
+  font-size: 12px;
+  line-height: calc(14 / 12);
+  letter-spacing: 0.01em;
+  color: rgba(117, 117, 117, 0.5);
+}
+
+.contacts-form-comment:focus::placeholder {
+  color: var(--accent-color);
+}
+
 .contacts-form-name {
   position: relative;
   display: block;
+}
+
+.contacts-form-name:focus {
+  border-color: var(--accent-color);
+  outline: none;
 }
 
 .contacts-form-accept {
@@ -904,6 +959,7 @@ ol {
 
 .contacts-form-accept-text {
   font-size: 14px;
+  font-weight: 400;
   line-height: calc(24 / 14);
   letter-spacing: 0.03em;
   color: var(--title-text-color);
@@ -913,6 +969,7 @@ ol {
 
 .contacts-form-acces-link {
   font-size: 14px;
+  font-weight: 400;
   line-height: calc(24 / 14);
   letter-spacing: 0.03em;
   text-decoration-line: underline;
@@ -920,7 +977,7 @@ ol {
   margin-left: 7px;
 }
 
-.contacts-form-button {
+.button-secondary.button-modal {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -928,16 +985,20 @@ ol {
   min-height: 50px;
   background: var(--accent-color);
   border: none;
-  border-radius: 4px;
+  font-weight: 400;
+
   line-height: calc(30 / 16);
-  letter-spacing: 0.06em;
-  color: var(--white-color);
-  cursor: pointer;
+
   margin-left: auto;
   margin-right: auto;
-  transition-property: background-color, box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 0 auto;
+}
+
+.button-secondary.button-modal:hover,
+.button-secondary.button-modal:focus {
+  color: var(--white-color);
+  background-color: var(--background-button-color-sec);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .contacts-form-field {
@@ -955,11 +1016,11 @@ ol {
 .contacts-form-img {
   position: absolute;
   fill: var(--black-color);
-  left: 12px;
+  left: 11px;
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
-  transition-property: none;
+  transition-property: fill;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -991,4 +1052,5 @@ ol {
   font-size: 20px;
   justify-content: center;
   letter-spacing: 0.03em;
+  line-height: calc(23 / 20);
 }
